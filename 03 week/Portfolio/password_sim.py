@@ -4,5 +4,8 @@ while True:
     if pass1 != pass2:
         print('Passwords do not match, Try again')
     else:
-        print('Password has been set.')
-        break
+        if 8 <= len(pass1) <= 12:
+            print('Password has been set.')
+            break
+
+
