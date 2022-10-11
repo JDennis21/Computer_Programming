@@ -4,7 +4,7 @@ import random
 
 LIST_OF_WORDS = ['dog', 'ham', 'cat', 'knight', 'mighty', 'beast', 'bat', 'cheese', 'knuckles', 'mouse', 'black',
                  'white', 'red', 'purple', 'green', 'big', 'small', 'massive', 'tiny', 'round', 'square', 'minus',
-                 'plus']
+                 'plus', 'course']
 
 print('Password Generator\n===================')
 num_students = input('How many passwords are required?\n')
