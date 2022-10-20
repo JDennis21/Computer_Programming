@@ -30,6 +30,6 @@ if __name__ == '__main__':
                 print(f'\nTotal Runners: {len(runnerlist)}\nAverage Time: {avg}\n'
                       f'Fastest Time: {mins_conversion(slowest_runner[1])}\n'
                       f'Slowest Time: {mins_conversion(fastest_runner[1])}\n\nBest Runner #{fastest_runner[0]}')
-            break
+                break
         else:
             print('Ignoring invalid input.')
