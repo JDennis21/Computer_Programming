@@ -15,10 +15,10 @@ if __name__ == '__main__':
 
     while True:
         runner = input('>')
-        if len(runner) == 8 and runner[3:5] == '::':
-            seconds = int(runner[5:8])
-            runnerlist.append([int(runner[0:3]), int(runner[5:8])])
-            time += seconds
+        if 8 <= len(runner) <= 9 and runner[3:5] == '::':
+            seconds = int(runner[5::])
+            runnerlist.append([int(runner[0:3]), int(runner[5::])])
+            time = seconds
         elif runner == 'END' or runner == 'end':
             if len(runnerlist) == 0:
                 print('Nothing to do.')
@@ -28,8 +28,8 @@ if __name__ == '__main__':
                 fastest_runner = min(runnerlist, key=lambda slow: slow[1])
                 slowest_runner = max(runnerlist, key=lambda fast: fast[1])
                 print(f'\nTotal Runners: {len(runnerlist)}\nAverage Time: {avg}\n'
-                      f'Fastest Time: {mins_conversion(slowest_runner[1])}\n'
-                      f'Slowest Time: {mins_conversion(fastest_runner[1])}\n\nBest Runner #{fastest_runner[0]}')
+                      f'Fastest Time: {mins_conversion(fastest_runner[1])}\n'
+                      f'Slowest Time: {mins_conversion(slowest_runner[1])}\n\nBest Runner #{fastest_runner[0]}')
                 break
         else:
             print('Ignoring invalid input.')
