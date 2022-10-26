@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+from sys import argv
+
+
 def shift_string(input_str, offset):
     shifted_str = ''
     for character in input_str:
@@ -22,17 +25,26 @@ def shift_string(input_str, offset):
 
 COMMON_WORDS = ['that', 'have', 'with', 'this', 'from', 'they', 'there', 'would', 'their', 'what', 'about', 'your']
 
-
 if __name__ == '__main__':
-    with open('sample_message_2.txt') as encrypted:
-        encrypted_str = ''
-        for line in encrypted:
-            encrypted_str += ''.join(line)
+    try:
+        argument = argv[1]
+        with open(argument) as encrypted:
+            encrypted_str = ''
+            for line in encrypted:
+                encrypted_str += ''.join(line)
 
-    for num in range(26):
-        for word in COMMON_WORDS:
-            if word in shift_string(encrypted_str, num):
-                print(f'\n{shift_string(encrypted_str, num)}')
+        cipher = False
+
+        for num in range(26):
+            for word in COMMON_WORDS:
+                if word in shift_string(encrypted_str, num):
+                    print(f'\n{shift_string(encrypted_str, num)}')
+                    cipher = True
+                    break
+            if num == 25 and cipher is False:
+                print('Cannot decrypt. Most likely not a caesar cipher at work here.')
                 break
-            elif num == 26:
-                print('This is most likely not a caesar cipher.')
+    except FileNotFoundError:
+        print('Error: File does not exist.')
+    except IndexError:
+        print('Error: Argument is missing.')
