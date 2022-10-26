@@ -24,7 +24,8 @@ def shift_string(input_str, offset):
 
 
 COMMON_WORDS = ['that', 'have', 'with', 'this', 'from', 'they', 'there', 'would', 'their', 'what', 'about', 'your',
-                "won't", "can't", 'make', 'which', 'when', 'some', 'take', 'could', 'look', 'want', 'because']
+                "won't", "can't", 'make', 'which', 'when', 'some', 'take', 'could', 'look', 'want', 'because', 'you',
+                'are', 'why', 'not']
 
 if __name__ == '__main__':
     try:
@@ -37,11 +38,14 @@ if __name__ == '__main__':
         cipher = False
 
         for num in range(26):
+            correct_word = 0
             for word in COMMON_WORDS:
-                if word in shift_string(encrypted_str, num):
-                    print(f'\n{shift_string(encrypted_str, num)}')
-                    cipher = True
-                    break
+                if word in shift_string(encrypted_str.lower(), num):
+                    correct_word += 1
+                    if correct_word == 3:
+                        print(f'\n{shift_string(encrypted_str, num)}')
+                        cipher = True
+                        break
             if num == 25 and cipher is False:
                 print('Cannot decrypt. Most likely not a caesar cipher at work here.')
                 break
