@@ -23,7 +23,8 @@ def shift_string(input_str, offset):
     return ''.join(shifted_str)
 
 
-COMMON_WORDS = ['that', 'have', 'with', 'this', 'from', 'they', 'there', 'would', 'their', 'what', 'about', 'your']
+COMMON_WORDS = ['that', 'have', 'with', 'this', 'from', 'they', 'there', 'would', 'their', 'what', 'about', 'your',
+                "won't", "can't", 'make', 'which', 'when', 'some', 'take', 'could', 'look', 'want', 'because']
 
 if __name__ == '__main__':
     try:
