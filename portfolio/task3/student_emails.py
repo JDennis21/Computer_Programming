@@ -25,10 +25,10 @@ if __name__ == '__main__':
                 if character.isupper():
                     initials += f'{character}.'
             try:
-                output = open('student_data_output', 'x')
+                output = open('student_data_output.txt', 'x')
                 output.write(f'{student_id} {initials.lower()}{surname.lower()}{rand_nums}@poppleton.ac.uk\n')
             except FileExistsError:
-                output = open('student_data_output', 'a')
+                output = open('student_data_output.txt', 'a')
                 output.write(f'{student_id} {initials.lower()}{surname.lower()}{rand_nums}@poppleton.ac.uk\n')
             output.close()
     except FileNotFoundError:
