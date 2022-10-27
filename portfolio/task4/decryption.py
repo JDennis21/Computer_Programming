@@ -8,14 +8,14 @@ def shift_string(input_str, offset):
     for character in input_str:
         character_num = ord(character)
         shifted_num = character_num + offset
-        if 97 <= character_num <= 122 and shifted_num <= 122:
+        if character.islower() and shifted_num <= 122:
             shifted_str += chr(shifted_num)
-        elif 97 <= character_num <= 122 <= shifted_num:
+        elif character.islower() and 122 <= shifted_num:
             reset = (shifted_num - 26) - 97
             shifted_str += chr(97 + reset)
-        elif 65 <= character_num <= 90 and shifted_num <= 90:
+        elif character.isupper() and shifted_num <= 90:
             shifted_str += chr(shifted_num)
-        elif 65 <= character_num <= 90 <= shifted_num:
+        elif character.isupper() and 90 <= shifted_num:
             reset = (shifted_num - 26) - 65
             shifted_str += chr(65 + reset)
         else:
@@ -34,9 +34,7 @@ if __name__ == '__main__':
             encrypted_str = ''
             for line in encrypted:
                 encrypted_str += ''.join(line)
-
         cipher = False
-
         for num in range(26):
             correct_word = 0
             for word in COMMON_WORDS:
