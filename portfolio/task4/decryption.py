@@ -6,8 +6,7 @@ from sys import argv
 def shift_string(input_str, offset):
     shifted_str = ''
     for character in input_str:
-        character_num = ord(character)
-        shifted_num = character_num + offset
+        shifted_num = ord(character) + offset
         if character.islower() and shifted_num <= 122:
             shifted_str += chr(shifted_num)
         elif character.islower() and 122 <= shifted_num:
