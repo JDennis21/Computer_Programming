@@ -42,7 +42,6 @@ if __name__ == '__main__':
                     if correct_word == 3:
                         print(f'\n{shift_string(encrypted_str, num)}')
                         cipher = True
-                        print(num)
                         break
             if num == 25 and cipher is False:
                 print('Cannot decrypt. Most likely not a caesar cipher at work here.')
