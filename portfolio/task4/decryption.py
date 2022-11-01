@@ -37,11 +37,12 @@ if __name__ == '__main__':
         for num in range(26):
             correct_word = 0
             for word in COMMON_WORDS:
-                if word in shift_string(encrypted_str.lower(), num):
+                if word in shift_string(encrypted_str.lower(), num) and num > 0:
                     correct_word += 1
                     if correct_word == 3:
                         print(f'\n{shift_string(encrypted_str, num)}')
                         cipher = True
+                        print(num)
                         break
             if num == 25 and cipher is False:
                 print('Cannot decrypt. Most likely not a caesar cipher at work here.')
