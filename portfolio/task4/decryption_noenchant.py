@@ -9,7 +9,7 @@ def shift_string(input_str, offset):
         if character.isupper():
             from string import ascii_uppercase as alpha
             shifted_alpha = alpha[offset:] + alpha[:offset]
-            output_string += shifted_alpha.find(character)
+            output_string += shifted_alpha[alpha.find(character)]
         elif character.islower():
             from string import ascii_lowercase as alpha
             shifted_alpha = alpha[offset:] + alpha[:offset]

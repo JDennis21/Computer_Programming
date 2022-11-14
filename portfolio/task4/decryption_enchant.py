@@ -3,13 +3,14 @@
 from sys import argv
 from enchant import Dict
 
+
 def shift_string(input_str, offset):
     output_string = ''
     for character in input_str:
         if character.isupper():
             from string import ascii_uppercase as alpha
             shifted_alpha = alpha[offset:] + alpha[:offset]
-            output_string += shifted_alpha.find(character)
+            output_string += shifted_alpha[alpha.find(character)]
         elif character.islower():
             from string import ascii_lowercase as alpha
             shifted_alpha = alpha[offset:] + alpha[:offset]
@@ -32,11 +33,12 @@ if __name__ == '__main__':
         cipher = False
 
         for num in range(26):
+            shifted_str_list = shift_string(encrypted_str, num).split()
             correct_word = 0
-            for word in COMMON_WORDS:
-                if word in shift_string(encrypted_str.lower(), num) and num > 0:
+            for word in shifted_str_list:
+                if eng_dict.check(word) and num > 0:
                     correct_word += 1
-                    if correct_word == 3:
+                    if correct_word / len(shifted_str_list) >= 0.85:
                         print(f'\n{shift_string(encrypted_str, num)}')
                         cipher = True
                         break
