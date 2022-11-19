@@ -24,8 +24,7 @@ eng_dict = Dict('en_GB')
 
 if __name__ == '__main__':
     try:
-        argument = argv[1]
-        with open(argument) as encrypted:
+        with open(argv[1]) as encrypted:
             encrypted_str = ''
             for line in encrypted:
                 encrypted_str += ''.join(line)

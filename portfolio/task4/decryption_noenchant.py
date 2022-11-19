@@ -25,8 +25,7 @@ COMMON_WORDS = ['that', 'have', 'with', 'this', 'from', 'they', 'there', 'would'
 
 if __name__ == '__main__':
     try:
-        argument = argv[1]
-        with open(argument) as encrypted:
+        with open(argv[1]) as encrypted:
             encrypted_str = ''
             for line in encrypted:
                 encrypted_str += ''.join(line)
