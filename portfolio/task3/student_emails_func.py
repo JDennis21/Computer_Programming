@@ -6,10 +6,7 @@ from sys import argv
 
 def nums_choice():
     from string import digits
-    new_nums = ''
-    for i in range(4):
-        new_nums += choice(digits)
-    return new_nums
+    return ''.join(choice(digits) for length in range(4))
 
 
 def student_id(input_data):
@@ -17,29 +14,24 @@ def student_id(input_data):
 
 
 def initials(input_data):
-    initial = ''
-    first_names = input_data[8::].split(',', 1)[1]
-    for character in first_names:
-        if character.isupper():
-            initial += f'{character}.'
-    return initial.lower()
+    return ''.join([f'{character}.' for character in input_data[8::].split(',')[1] if character.isupper()])
 
 
 def surname(input_data):
-    return input_data[9::].split(',', 1)[0].lower()
+    return input_data[9::].split(',')[0].lower()
+
+
+def email_generator(data):
+    return f'{student_id(data)} {initials(data)}{surname(data)}{nums_choice()}@poppleton.ac.uk\n'
 
 
 if __name__ == '__main__':
     try:
         with open(argv[1]) as student_data:
-            contents = []
-            for line in student_data:
-                contents.append(line.strip())
-            student_data.close()
+            user_info = [line.strip() for line in student_data]
 
-        for data in contents:
-            with open('student_data_output.txt', 'a') as output:
-                output.write(f'{student_id(data)} {initials(data)}{surname(data)}{nums_choice()}@poppleton.ac.uk\n')
+        with open('student_data_output.txt', 'a') as output:
+            [output.write(email_generator(info)) for info in user_info]
 
     except FileNotFoundError:
         print('Error: File does not exist.')
