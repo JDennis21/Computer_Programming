@@ -14,7 +14,7 @@ def student_id(input_data):
 
 
 def initials(input_data):
-    return ''.join([f'{character}.' for character in input_data[8::].split(',')[1] if character.isupper()])
+    return ''.join((f'{character}.' for character in input_data[8::].split(',')[1] if character.isupper()))
 
 
 def surname(input_data):
