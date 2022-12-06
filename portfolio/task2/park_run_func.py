@@ -3,7 +3,7 @@
 def mins_conversion(nums):
     secs = nums % 60
     mins = nums // 60
-    return f'{int(mins)} minute{"s" if mins != 1 else ""} and {int(secs)} second{"s" if secs != 1 else ""}'
+    return f'{int(mins)} minute{"s" if mins != 1 else ""}, {int(secs)} second{"s" if secs != 1 else ""}'
 
 
 def avg(num, amount):
@@ -19,8 +19,8 @@ def slow_runner(run_list):
 
 
 def final_output():
-    return f'\nTotal Runners: {len(runnerlist)}\nAverage Time: {avg(time, runnerlist)}\n' \
-           f'Fastest Time: {fast_runner(runnerlist)[1]}\nSlowest Time: {slow_runner(runnerlist)}\n\n' \
+    return f'\nTotal Runners: {len(runnerlist)}\nAverage Time:  {avg(time, runnerlist):}\n' \
+           f'Fastest Time:  {fast_runner(runnerlist)[1]:}\nSlowest Time:  {slow_runner(runnerlist):}\n\n' \
            f'Best Time Here: Runner #{fast_runner(runnerlist)[0]}'
 
 
@@ -29,15 +29,14 @@ if __name__ == '__main__':
     runnerlist = []
     time = 0
 
-    print('Park Run Timer\n~~~~~~~~~~~~~~\n')
+    print("Park Run Timer\n~~~~~~~~~~~~~~\n\n Let's go!\n")
 
     while True:
         runner = input('>')
         try:
             if '::' in runner:
-                seconds = int(runner.split('::', 1)[1])
-                time += seconds
-                runnerlist.append((int(runner.split('::')[0]), seconds,))
+                time += int(runner.split('::', 1)[1])
+                runnerlist.append((int(runner.split('::')[0]), int(runner.split('::', 1)[1]),))
             elif runner.lower() == 'end':
                 if len(runnerlist) == 0:
                     print('Nothing to do.')
@@ -46,6 +45,6 @@ if __name__ == '__main__':
                     print(final_output())
                     break
             else:
-                print('Ignoring invalid input.')
+                print('Error in data stream. Ignoring. carry on.')
         except ValueError:
-            print('Ignoring invalid input.')
+            print('Error in data stream. Ignoring. carry on.')
