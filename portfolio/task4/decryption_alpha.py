@@ -5,16 +5,14 @@ from pickle import load
 
 
 def shift_string(input_str, offset):
+    from string import ascii_uppercase as alpha
+    shifted_alpha = alpha[offset:] + alpha[:offset]
     output_string = ''
     for character in input_str:
         if character.isupper():
-            from string import ascii_uppercase as alpha
-            shifted_alpha = alpha[offset:] + alpha[:offset]
             output_string += shifted_alpha[alpha.find(character)]
         elif character.islower():
-            from string import ascii_lowercase as alpha
-            shifted_alpha = alpha[offset:] + alpha[:offset]
-            output_string += shifted_alpha[alpha.find(character)]
+            output_string += shifted_alpha.lower()[alpha.lower().find(character)]
         else:
             output_string += character
     return ''.join(output_string)
@@ -35,11 +33,13 @@ if __name__ == '__main__':
         for num in range(26):
             shifted_str_list = shift_string(no_spec_str.lower(), num).split()
             correct_word = 0
+
             for word in shifted_str_list[:]:
                 if len(word) <= 1:
                     shifted_str_list.remove(word)
                 elif word in eng_dict[word[:2]] and num > 0:
                     correct_word += 1
+
             if correct_word / len(shifted_str_list) >= 0.70:
                 print(f'\n{shift_string(original_str, num)}')
                 break
