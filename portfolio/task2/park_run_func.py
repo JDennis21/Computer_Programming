@@ -36,7 +36,7 @@ if __name__ == '__main__':
         try:
             if '::' in runner:
                 time += int(runner.split('::', 1)[1])
-                runnerlist.append((int(runner.split('::')[0]), int(runner.split('::', 1)[1]),))
+                runnerlist.append((int(runner.split('::')[0]), int(runner.split('::')[1]),))
             elif runner.lower() == 'end':
                 if len(runnerlist) == 0:
                     print('Nothing to do.')
