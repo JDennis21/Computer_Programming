@@ -30,7 +30,7 @@ if __name__ == '__main__':
                 original_str += ''.join(line)
                 no_spec_str += ''.join(char for char in line if char.isalpha() or char == ' ')
 
-        for num in range(26):
+        for num in range(1, 26):
             shifted_str_list = shift_string(no_spec_str.lower(), num).split()
             correct_word = 0
 
@@ -48,6 +48,6 @@ if __name__ == '__main__':
                 break
 
     except FileNotFoundError:
-        print('Error: File does not exist.')
+        print(f'Cannot open "{argv[1]}". Sorry about that.')
     except IndexError:
         print('Error: Argument is missing.')

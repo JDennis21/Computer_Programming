@@ -29,7 +29,7 @@ if __name__ == '__main__':
     runnerlist = []
     time = 0
 
-    print("Park Run Timer\n~~~~~~~~~~~~~~\n\n Let's go!\n")
+    print("Park Run Timer\n~~~~~~~~~~~~~~\n\nLet's go!\n")
 
     while True:
         runner = input('>')

@@ -19,4 +19,4 @@ if __name__ == '__main__':
             for count in range(int(num_students)):
                 print(f'{count + 1:>3} --> {"".join(choice(LIST_OF_WORDS) for num in range(3))}')
     except ValueError:
-        print('Please enter a value between 1 and 24.\n')
+        print('Please enter a number.\n')

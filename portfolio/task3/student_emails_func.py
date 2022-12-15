@@ -18,7 +18,7 @@ def initials(input_data):
 
 
 def surname(input_data):
-    return input_data[9::].split(',')[0].lower()
+    return ''.join(f'{character}' for character in input_data[9::].split(',')[0].lower() if character != ' ')
 
 
 def email_generator(data):
